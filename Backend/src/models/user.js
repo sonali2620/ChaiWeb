@@ -1,0 +1,22 @@
+import mongoose from "mongoose"
+
+const userSchema = new mongoose.Schema(
+  {
+    _id: {
+      type: String,        // email
+      required: true
+    },
+    password: {
+      type: String,
+      required: true
+    },
+    role: {
+      type: String,
+      enum: ["CUSTOMER", "ADMIN"],
+      default: "CUSTOMER"
+    }
+  },
+  { timestamps: true }
+)
+
+export const User = mongoose.model("User", userSchema)
